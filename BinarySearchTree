@@ -1,0 +1,39 @@
+package tree.imp;
+
+public class BinarySearchTree {
+    TreeNode root;
+
+    public BinarySearchTree(){
+        root=null;
+    }
+
+    public void insert (int value){
+      root =insertRecursive(root,value);
+    }
+
+    private TreeNode insertRecursive(TreeNode root, int value) {
+        if(root==null){
+            root=new TreeNode(value);
+            return root;
+        }else if(value<root.data){
+            root.left=insertRecursive(root.left,value);
+        }else{
+            root.right=insertRecursive(root.right,value);
+        }
+        return root;
+    }
+
+
+
+    public void show() {
+        printAllFieldsRecursive(root);
+    }
+
+    private void printAllFieldsRecursive(TreeNode root) {
+        if (root != null) {
+            System.out.println("Value: " + root.data );
+            printAllFieldsRecursive(root.left);
+            printAllFieldsRecursive(root.right);
+        }
+    }
+}
